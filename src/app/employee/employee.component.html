@@ -1,0 +1,100 @@
+<h3>BOARD OF DIRECTORS</h3>
+<div class="container">
+  
+<mat-card class="example-card" class="block" *ngFor="let employee of employeeArr">
+  
+
+  <div>
+    <span class="name">{{employee.name + " " + employee.surname}}</span>
+   <img mat-bcard-image src="{{employee.image}}" class="img"> 
+ 
+  <mat-card-content style="margin-bottom:0px">
+ 
+    <br>
+    <div class="block-text">
+    <span class="name-details">{{employee.position}}</span>
+    <br>
+    <span class="block-age">{{employee.age}}</span>
+
+     <mat-card-actions>
+    
+    <span class="update" routerLink="/update">Update</span>
+
+      <button mat-raised-button (click)="openDialog(employee)" class="delete" color="warn">Delete</button>
+  
+  </mat-card-actions>
+
+    </div>
+
+    </mat-card-content>
+
+  </div> 
+  
+</mat-card>
+
+
+<br clear="all">
+
+<div class="bottom-sec">
+<div class="AddEmployeeTitleContainer">  
+  <div class="addEmployeeTitleContainer">
+    <div >Add Employee</div>
+</div>
+
+<div class="addEmployeeBtnContainer">
+  <div class="addNewEmployeeBtn" (click)="addNewEmployeeBtn()">+</div>
+</div>
+</div>
+
+
+
+
+<div class="tableWrapper">
+<div class="containerTitle">
+  <div class="oneTitle">Name</div>
+  <div class="twoTitle">Position</div>
+  <div class="threeTitle">Actions</div>
+  <!-- <div class="four"></div> -->
+</div>
+
+<div class="containerListItems" *ngFor="let employee of employees; let i = index" [style.background-color]="changeColorOne()">
+  <div class="one">{{employee.name}}</div>
+  <div class="two">{{employee.position}}</div>
+  <div class="three">
+    <button (click)="editEmployee(i)">E</button>
+    <button (click)="deleteEmployee(i)">X</button>
+  </div>
+  <!-- <div class="four"></div> -->
+</div>
+</div>
+
+
+
+<div class="editEmployeeTitleContainer">
+  <div class="">Edit Employee</div>
+</div>
+
+<form>
+  <div class="form-group name">
+    <!-- <label for="name">Name:</label> -->
+    <input type="text"
+           class="form-control"
+           id="name"
+           name="name"
+           [(ngModel)]="model2.name"
+           placeholder="Name">
+  </div>
+
+   <div class="form-group position">
+    <!-- <label for="position">Position:</label> -->
+    <input type="text"
+           class="form-control"
+           id="position"
+           name="position"
+           [(ngModel)]="model2.position"
+           placeholder="Position">
+  </div>
+  <button type="submit" (click)="updateEmployee()">Update</button>
+</form>
+</div>
+</div>
